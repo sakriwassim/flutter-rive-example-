@@ -4,9 +4,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 late Box box;
 Future<void> main() async {
+  await Hive.initFlutter();
   box = await Hive.openBox('box');
   Hive.registerAdapter(BankAccountAdapter());
-  await Hive.initFlutter();
   box.put('bankAccount', BankAccount(currency: "\$USD", myMoney: 100000));
   runApp(const MyApp());
 }
